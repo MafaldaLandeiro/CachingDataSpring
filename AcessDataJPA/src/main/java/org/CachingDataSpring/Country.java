@@ -1,4 +1,4 @@
-package org.AcessDataJPA;
+package org.CachingDataSpring;
 
 import java.io.Serializable;
 import javax.persistence.*;

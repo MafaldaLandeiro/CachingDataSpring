@@ -1,4 +1,4 @@
-package org.AcessDataJPA;
+package org.CachingDataSpring;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,7 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class App implements CommandLineRunner {
 
 	private static final Logger log = LoggerFactory.getLogger(App.class);
-	
+
 	@Autowired
 	CountryRepository countryRepository;
 
@@ -21,20 +21,12 @@ public class App implements CommandLineRunner {
 
 	@Override
 	public void run(String... arg0) throws Exception {
-		log.info("Countries found with findAll():");
-		for (Country country1 : countryRepository.findAll()) {
-			log.info(country1.toString());
+		for (int i = 0; i < 5; i++) {
+			log.info("--- Country found with findByCurrency(EUR) ---");
+			for (Country country3 : countryRepository.findByCurrency("EUR")) {
+				log.info(country3.toString());
+			}
 		}
-		
-		Country country2 = countryRepository.findOne(3);
-		log.info("Country found with findOne(3):");
-		log.info(country2.toString());
-		
-		log.info("Country found with findByCurrency(EUR)");
-		for (Country country3 : countryRepository.findByCurrency("EUR")) {
-			log.info(country3.toString());
-		}
-		
 
 	}
 }
